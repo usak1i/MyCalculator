@@ -1,5 +1,3 @@
-# 檔案名稱：.github/workflows/ci.yml
-
 # 1. 給這個工作流程取一個名字
 name: Python CI
 
