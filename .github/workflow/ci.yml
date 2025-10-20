@@ -1,0 +1,42 @@
+# 檔案名稱：.github/workflows/ci.yml
+
+# 1. 給這個工作流程取一個名字
+name: Python CI
+
+# 2. 決定何時觸發
+on:
+  push:
+    branches: ["main"] # 當 push 到 main 分支時觸發
+  pull_request:
+    branches: ["main"] # 當有人發 pull request 到 main 分支時觸發
+
+# 3. 定義要做的工作
+jobs:
+  build:
+    # 決定要用什麼作業系統的虛擬機來跑
+    runs-on: ubuntu-latest
+
+    steps:
+      # 第一步：把你的 GitHub 儲存庫程式碼 checkout 下來
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 第二步：設定 Python 環境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14.0" # 指定你使用的 Python 版本
+
+      # 第三步：安裝依賴套件 (例如 pytest), But we dont need to install any dependencies
+      # If you have a requirements.txt file, use this line:
+      # - name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install pytest
+      #     # If you have requirements.txt, use this line:
+      #     # pip install -r requirements.txt
+
+      # 第四步：執行測試！
+      - name: Run tests
+        run: |
+          python3 CalcTest.py
