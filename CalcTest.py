@@ -27,6 +27,7 @@ class TestCalculator(unittest.TestCase):
         res3 = calc.div(1, 0)  # divide by zero error
         self.assertEqual(res1, 2.0)  # Expect 6 / 3 = 2.0
         self.assertEqual(res2, 3.5)  # Expect 7 / 2 = 3.5
+        self.assertEqual(res3, 0)  # Expect division by zero to return 0
 
 
 if __name__ == "__main__":
